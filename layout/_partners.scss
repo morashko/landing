@@ -1,0 +1,22 @@
+.partners {
+  padding: 40px 0 10px;
+  text-align: center;
+
+  @include media('>=tablet') {
+    padding: 108px 0 61px;
+  }
+}
+
+.partners-list {
+  @extend %listreset;
+  
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 15px 30px;
+
+    @include media('>=tablet') {
+      margin: 0 46px 45px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.btn {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: $brand-color;
+  text-align: center;
+  font-size: 18px;
+  font-family: $base-font-sans-serif2;
+  padding: 0;
+  border: 0;
+  color: rgba(black, 0.7);
+  text-transform: uppercase;
+  padding: 15px 37px;
+  line-height: 23px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  outline: none;
+
+  &:hover {
+    background-color: darken($brand-color, 5%);
+  }
+}
