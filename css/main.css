@@ -753,8 +753,8 @@ input[type='submit'] {
     vertical-align: middle;
     margin: 0 2px; }
 
-.slideshow .holder {
-  width: 100%; }
+.slideshow img {
+  vertical-align: top; }
 
 .slideshow .mask {
   position: relative;
@@ -768,6 +768,10 @@ input[type='submit'] {
   width: 100%;
   opacity: 0;
   z-index: 0;
+  opacity: 0;
+  z-index: 0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -810,7 +814,7 @@ input[type='submit'] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 7%; }
+  padding: 15px 7%; }
   .slide-text .slide-text-body {
     margin: auto; }
 

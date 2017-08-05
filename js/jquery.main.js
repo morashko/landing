@@ -61,21 +61,26 @@ function initFocuseState() {
 
 function initSlideshow() {
   $('.slideshow').each(function() {
-    var container = $(this),
-      mask = container.find('.mask .slides'),
-      slides = mask.find('.slide'),
-      slidesCount = slides.length,
-      pagination = container.find('.pagination ul li'),
-      btnPrev = container.find('.btn-prev'),
-      btnNext = container.find('.btn-next'),
-      slideIndex = 0,
-      animationDuration = 300;
-      slideshowHeight = slides.eq(0).height();
+    var container = $(this);
+    var mask = container.find('.mask .slides');
+    var slides = mask.find('.slide');
+    var slidesCount = slides.length;
+    var pagination = container.find('.pagination ul li');
+    var btnPrev = container.find('.btn-prev');
+    var btnNext = container.find('.btn-next');
+    var slideIndex = 0;
+    var animationDuration = 300;
+    var slideshowHeight = slides.eq(slideIndex).height();
     
-    slides.eq(0).addClass('active');
-    slides.css({opacity: 0}).filter('.active').css({opacity: 1});
+    slides.eq(slideIndex).addClass('active');
+//    slides.css({opacity: 0}).filter('.active').css({opacity: 1});
 
-    mask.height(slideshowHeight);
+    function slideHeight() {
+      slideshowHeight = slides.eq(slideIndex).height();
+      mask.height(slideshowHeight);
+    }
+
+    slideHeight();
     
     function checkRange() {
       if (slideIndex < 0) {
@@ -87,20 +92,19 @@ function initSlideshow() {
     }
     
     function changeSlide() {
-      slides.stop().animate({
-        opacity: 0
-      }, animationDuration);
+      // slides.stop().animate({
+      //   opacity: 0
+      // }, animationDuration);
       
-      slides.eq(slideIndex).stop().animate({
-        opacity: 1
-      }, animationDuration);
+      // slides.eq(slideIndex).stop().animate({
+      //   opacity: 1
+      // }, animationDuration);
       
       pagination.removeClass('active');
       pagination.eq(slideIndex).addClass('active');
       slides.removeClass('active');
       slides.eq(slideIndex).addClass('active');
-      slideshowHeight = slides.eq(slideIndex);
-      mask.height(slideshowHeight);
+      slideHeight();
     }
     
     btnPrev.on('click', function(e) {
@@ -123,5 +127,7 @@ function initSlideshow() {
         changeSlide();
       });
     });
+
+    $(window).on('load resize orientationchange', slideHeight);
   });
 }
