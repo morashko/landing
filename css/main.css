@@ -389,7 +389,7 @@ Single-colored icons can be modified like so:
 .icon-facebook {
   width: 0.587890625em; }
 
-.socials ul, .partners-list {
+.socials ul, .person-contacts, .rating, .partners-list {
   margin: 0;
   padding: 0;
   list-style: none; }
@@ -464,7 +464,7 @@ p {
   margin: 0 0 1em; }
 
 a {
-  color: #39f; }
+  color: inherit; }
   a:hover, a:focus {
     text-decoration: none; }
 
@@ -569,7 +569,7 @@ input[type='submit'] {
   max-width: 1170px;
   padding: 0 15px; }
 
-.visuallyhidden, .socials ul span {
+.visuallyhidden, .socials ul span, .person-contacts li span {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -578,6 +578,30 @@ input[type='submit'] {
   padding: 0;
   position: absolute;
   width: 1px; }
+
+.section {
+  padding: 70px 0; }
+  .section h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.902);
+    font-family: "Montserrat", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin: 0; }
+  .section .sub-header {
+    text-align: center;
+    font-size: 17px;
+    font-family: "Merriweather", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.62);
+    margin-bottom: 70px; }
+  @media (min-width: 768px) {
+    .section {
+      padding: 115px 0; }
+      .section .sub-header {
+        margin-bottom: 115px; } }
 
 .footer {
   background: #262b2e;
@@ -619,6 +643,176 @@ input[type='submit'] {
     .socials ul a:hover {
       background: #6eeee4;
       color: #262b2e; }
+
+.team-list {
+  margin: 0 -8px;
+  overflow: hidden;
+  text-align: center; }
+
+.person {
+  padding: 0 8px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 -4px 14px 0; }
+  .person img {
+    width: 100%;
+    height: auto;
+    vertical-align: top; }
+  @media (min-width: 640px) {
+    .person {
+      width: 50%; } }
+  @media (min-width: 1024px) {
+    .person {
+      width: 33.3333%; } }
+
+.person-holder {
+  position: relative; }
+
+.person-caption {
+  text-align: left;
+  background: rgba(109, 246, 235, 0.98);
+  box-shadow: 0px 7px 16px 0px rgba(20, 20, 21, 0.18);
+  position: absolute;
+  bottom: 17px;
+  right: 17px;
+  left: 17px;
+  padding: 40px 30px 40px 40px;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden; }
+  .person:hover .person-caption {
+    opacity: 1;
+    visibility: visible; }
+  .person-caption::before {
+    content: '';
+    height: 0;
+    width: 0;
+    border-bottom: 19px solid rgba(109, 246, 235, 0.98);
+    border-left: 11.5px solid transparent;
+    border-right: 11.5px solid transparent;
+    position: absolute;
+    bottom: 100%;
+    left: 21px; }
+  .person-caption p {
+    margin: 0 0 1.5em; }
+
+.person-name {
+  font-family: "Merriweather", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+  font-weight: bold;
+  color: #272727;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 0.75em; }
+
+.person-position {
+  font-style: italic;
+  color: rgba(118, 112, 112, 0.95);
+  text-transform: none;
+  font-size: 15px;
+  font-weight: normal;
+  display: inline; }
+
+.person-contacts {
+  font-size: 14px; }
+  .person-contacts li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 11px; }
+  .person-contacts a:hover {
+    opacity: 0.6; }
+
+@supports ((display: -webkit-box) or (display: -ms-flexbox) or (display: flex)) {
+  .team-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    @media (min-width: 640px) {
+      .team-list {
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start; } }
+  .person {
+    float: none; } }
+
+.testimonials {
+  text-align: center;
+  background: #f9fbfb; }
+  .testimonials .person-position {
+    text-transform: uppercase; }
+
+.rating {
+  color: #f2da3b; }
+  .rating li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px; }
+
+.slideshow .holder {
+  width: 100%; }
+
+.slideshow .mask {
+  position: relative;
+  overflow: hidden;
+  width: 100%; }
+
+.slideshow .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .slideshow .slide.active {
+    z-index: 1;
+    opacity: 1; }
+
+.slideshow .controls {
+  text-align: right;
+  margin-top: 30px; }
+  .slideshow .controls > a {
+    display: inline-block;
+    width: 53px;
+    height: 53px;
+    text-align: center;
+    line-height: 53px;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0px 8px 11px 0px rgba(20, 20, 21, 0.05);
+    margin: 0 0 0 25px;
+    color: rgba(0, 0, 0, 0.3); }
+    .slideshow .controls > a svg {
+      vertical-align: top;
+      margin-top: 17px; }
+    .slideshow .controls > a:hover {
+      background: #6df6eb;
+      color: rgba(0, 0, 0, 0.67); }
+
+@media (min-width: 768px) {
+  .slide-image {
+    width: 34.2105263158%; }
+  .slide-text {
+    width: 58.3333333333%; } }
+
+.slide-text {
+  background: #eaebed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 7%; }
+  .slide-text .slide-text-body {
+    margin: auto; }
 
 .partners {
   padding: 40px 0 10px;

@@ -1,5 +1,6 @@
 jQuery(function(){
   initFocuseState();
+  initSlideshow();
 });
 
 function initFocuseState() {
@@ -54,5 +55,73 @@ function initFocuseState() {
     }
 
     inputs.on('focus', focuseHandler).on('blur', blurHandler);
+  });
+}
+
+
+function initSlideshow() {
+  $('.slideshow').each(function() {
+    var container = $(this),
+      mask = container.find('.mask .slides'),
+      slides = mask.find('.slide'),
+      slidesCount = slides.length,
+      pagination = container.find('.pagination ul li'),
+      btnPrev = container.find('.btn-prev'),
+      btnNext = container.find('.btn-next'),
+      slideIndex = 0,
+      animationDuration = 300;
+      slideshowHeight = slides.eq(0).height();
+    
+    slides.eq(0).addClass('active');
+    slides.css({opacity: 0}).filter('.active').css({opacity: 1});
+
+    mask.height(slideshowHeight);
+    
+    function checkRange() {
+      if (slideIndex < 0) {
+        slideIndex = slidesCount - 1;
+      }
+      if (slideIndex > slidesCount - 1) {
+        slideIndex = 0;
+      }
+    }
+    
+    function changeSlide() {
+      slides.stop().animate({
+        opacity: 0
+      }, animationDuration);
+      
+      slides.eq(slideIndex).stop().animate({
+        opacity: 1
+      }, animationDuration);
+      
+      pagination.removeClass('active');
+      pagination.eq(slideIndex).addClass('active');
+      slides.removeClass('active');
+      slides.eq(slideIndex).addClass('active');
+      slideshowHeight = slides.eq(slideIndex);
+      mask.height(slideshowHeight);
+    }
+    
+    btnPrev.on('click', function(e) {
+      e.preventDefault();
+      slideIndex--;
+      checkRange();
+      changeSlide();
+    });
+
+    btnNext.on('click', function(e) {
+      e.preventDefault();
+      slideIndex++;
+      checkRange();
+      changeSlide();
+    });   
+    
+    pagination.each(function(index) {
+      $(this).on('click', function() {
+        slideIndex = index;
+        changeSlide();
+      });
+    });
   });
 }

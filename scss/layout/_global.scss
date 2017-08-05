@@ -14,3 +14,36 @@
   position: absolute;
   width: 1px;
 }
+
+.section {
+  padding: 70px 0;
+
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(black, 0.902);
+    font-family: $base-font-sans-serif2;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  .sub-header {
+    text-align: center;
+    font-size: 17px;
+    font-family: $base-font-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(black, 0.62);
+    margin-bottom: 70px;
+  }
+
+  
+  @include media('>=tablet') {
+    padding: 115px 0;
+
+    .sub-header {
+      margin-bottom: 115px;
+    }
+  }
+}

@@ -42,7 +42,8 @@ p {
 }
 
 a {
-  color: $base-link-color;
+  color: inherit;
+  
   &:hover,
   &:focus {
     text-decoration: none;

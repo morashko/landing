@@ -1,6 +1,7 @@
 $breakpoints: (
   'xs-phone': 320px,
   'phone': 480px,
+  'phone-lg': 640px,
   'tablet': 768px,
   'desktop': 1024px,
   'widescreen': 1200px
@@ -35,6 +36,8 @@ $media-expressions: (
 @import 'layout/global';
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/team';
+@import 'layout/testimonials';
 @import 'layout/partners';
 @import 'layout/contacts';
 
