@@ -394,7 +394,7 @@ Single-colored icons can be modified like so:
   padding: 0;
   list-style: none; }
 
-.clearfix:after, .slideshow:after, .slideshow .slide:after {
+.clearfix:after, .services-list:after, .slideshow:after, .slideshow .slide:after {
   content: '';
   display: block;
   clear: both; }
@@ -446,16 +446,16 @@ h1, .h1 {
   font-size: 30px; }
 
 h2, .h2 {
-  font-size: 27px; }
+  font-size: 20px; }
 
 h3, .h3 {
-  font-size: 24px; }
+  font-size: 18px; }
 
 h4, .h4 {
-  font-size: 21px; }
+  font-size: 17px; }
 
 h5, .h5 {
-  font-size: 17px; }
+  font-size: 16px; }
 
 h6, .h6 {
   font-size: 15px; }
@@ -643,6 +643,207 @@ input[type='submit'] {
     .socials ul a:hover {
       background: #6eeee4;
       color: #262b2e; }
+
+.services {
+  text-align: center;
+  background: #f9fbfb; }
+
+.services-list {
+  margin: 0 -7px; }
+
+.service {
+  position: relative;
+  overflow: hidden;
+  margin: 0 7px 14px; }
+  .service img {
+    vertical-align: top;
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out; }
+  .service:hover img {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1); }
+  .service h2,
+  .service .h2 {
+    font-family: "Merriweather", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+    font-size: 1.25em; }
+
+.more {
+  text-transform: uppercase;
+  font-size: 1.25em;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 1.5em;
+  display: inline-block; }
+  .more svg {
+    vertical-align: middle;
+    margin-top: -4px; }
+  .more:hover {
+    color: #6df6eb; }
+
+.service-caption,
+.service-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  text-align: left;
+  padding: 14px;
+  font-size: 14px; }
+  @media (max-width: 767px) {
+    .service-caption h2,
+    .service-caption .h2,
+    .service-description h2,
+    .service-description .h2 {
+      margin-bottom: 0.5em;
+      line-height: 1.25; }
+    .service-caption .more,
+    .service-description .more {
+      margin-top: 0.25em; } }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .service-caption,
+  .service-description {
+    font-size: 13px; }
+    .service-caption h2,
+    .service-caption .h2,
+    .service-description h2,
+    .service-description .h2 {
+      margin-bottom: 0.5em; }
+    .service-caption .more,
+    .service-description .more {
+      margin-top: 0.25em; }
+    .service-caption p,
+    .service-description p {
+      line-height: 1.25;
+      margin: 0.25em 0 0; } }
+  @media (min-width: 768px) {
+    .service-caption,
+    .service-description {
+      padding: 24px; } }
+  @media (min-width: 1024px) {
+    .service-caption,
+    .service-description {
+      padding: 34px 44px;
+      font-size: 16px; } }
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .service-caption h2,
+  .service-caption .h2,
+  .service-description h2,
+  .service-description .h2 {
+    margin-bottom: 0.5em; }
+  .service-caption .more,
+  .service-caption .close,
+  .service-description .more,
+  .service-description .close {
+    margin-top: 0.25em; }
+  .service-caption p,
+  .service-description p {
+    line-height: 1.5;
+    margin: 0.25em 0; } }
+  @media (min-width: 1200px) {
+    .service-caption,
+    .service-description {
+      padding: 54px 64px; } }
+
+.service-caption {
+  background: rgba(51, 51, 51, 0.65);
+  color: rgba(255, 255, 255, 0.9); }
+  .is-opened .service-caption {
+    display: none; }
+  .service-caption p {
+    line-height: 1.25; }
+  .service-caption .h2 {
+    color: rgba(255, 255, 255, 0.95); }
+
+.service-description {
+  background: rgba(109, 246, 235, 0.97);
+  display: none; }
+  .service-description p {
+    line-height: 1.5625; }
+  .is-opened .service-description {
+    display: block; }
+  .service-description .close {
+    display: inline-block;
+    margin-top: 1.5em;
+    color: rgba(0, 0, 0, 0.4); }
+    .service-description .close:hover {
+      color: black; }
+  @media (max-width: 639px) {
+    .service-description {
+      font-size: 14px;
+      position: relative; }
+      .service-description h2 {
+        margin-right: 40px; }
+      .service-description p {
+        margin-bottom: 0; }
+        .service-description p + p {
+          margin-top: 0.25em; }
+      .service-description .close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        margin-top: 0; } }
+
+@media (max-width: 639px) {
+  .service:not(.wide) .close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    margin-top: 0; } }
+
+@media (min-width: 768px) {
+  .service:not(.wide) .close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    margin-top: 0; } }
+
+@media (min-width: 768px) {
+  .service {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 3px;
+    width: calc((100% / (1140 + 14) * (472 + 14)) - 14px); }
+    .service.wide {
+      width: calc((100% / (1140 + 14) * (652 + 14)) - 14px); } }
+
+@supports ((display: -webkit-box) or (display: -ms-flexbox) or (display: flex)) {
+  .service-caption,
+  .service-description {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
+  .service-description {
+    display: none; }
+    .is-opened .service-description {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+  @media (min-width: 768px) {
+    .service {
+      margin-right: 7px; }
+    .services-list {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; } } }
 
 .team-list {
   margin: 0 -8px;

@@ -1,7 +1,26 @@
 jQuery(function(){
   initFocuseState();
   initSlideshow();
+  initServices();
 });
+
+function initServices() {
+  jQuery('.service').each(function() {
+    var box = $(this);
+    var opener = box.find('.more');
+    var closer = box.find('.close');
+
+    opener.on('click', function(e) {
+      e.preventDefault();
+      box.addClass('is-opened');
+    });
+
+    closer.on('click', function(e) {
+      e.preventDefault();
+      box.removeClass('is-opened');
+    });
+  });
+}
 
 function initFocuseState() {
   var activeFormClass = 'is-form-focused';
@@ -125,7 +144,6 @@ function initSlideshow() {
     });   
     
     pagination.each(function(index) {
-      console.log(index);
       $(this).on('click', function() {
         slideIndex = index;
         changeSlide();

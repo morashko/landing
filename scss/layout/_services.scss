@@ -1,0 +1,256 @@
+.services {
+  text-align: center;
+  background: $bg-light;
+}
+
+.services-list {
+  margin: 0 -7px;
+  @extend %clearfix;
+}
+
+
+.service {
+  position: relative;
+  overflow: hidden;
+  margin: 0 7px 14px;
+
+  img {
+    vertical-align: top;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+
+  h2,
+  .h2 {
+    font-family: $base-font-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+    font-size: 1.25em;
+  }
+}
+
+.more {
+  text-transform: uppercase;
+  font-size: 1.25em;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 1.5em;
+  display: inline-block;
+
+  svg {
+    vertical-align: middle;
+    margin-top: -4px;
+  }
+
+  &:hover {
+    color: $brand-color;
+  }
+}
+
+
+.service-caption,
+.service-description  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  text-align: left;
+  padding: 14px;
+  font-size: 14px;
+
+  @include media('<tablet') {
+    h2,
+    .h2 {
+      margin-bottom: 0.5em;
+      line-height: 1.25;
+    }
+
+    .more {
+      margin-top: 0.25em;
+    }
+  }
+
+  @include media('>=tablet', '<desktop') {
+    font-size: 13px;
+
+    h2,
+    .h2 {
+      margin-bottom: 0.5em;
+    }
+
+    .more {
+      margin-top: 0.25em;
+    }
+
+    p {
+      line-height: 1.25;
+      margin: 0.25em 0 0;
+    }
+  }
+
+  @include media('>=tablet') {
+    padding: 24px;
+  }
+
+  @include media('>=desktop') {
+    padding: 34px 44px;
+    font-size: 16px;
+  }
+
+  @include media('>=desktop', '<widescreen') {
+    h2,
+    .h2 {
+      margin-bottom: 0.5em;
+    }
+
+    .more,
+    .close {
+      margin-top: 0.25em;
+    }
+
+    p {
+      line-height: 1.5;
+      margin: 0.25em 0;
+    }
+  }
+
+  @include media('>=widescreen') {
+    padding: 54px 64px;
+  }
+}
+
+
+.service-caption {
+  background: rgba($black, 0.65);
+  color: rgba(white, 0.9);
+
+  .is-opened & {
+    display: none;
+  }
+
+  p {
+    line-height: (20 / 16);
+  }
+
+  .h2 {
+    color: rgba(white, 0.95);
+  }
+}
+
+.service-description {
+  background: rgba($brand-color, 0.97);
+  display: none;
+
+  p {
+    line-height: (25 / 16);
+  }
+
+  .is-opened & {
+    display: block;
+  }
+
+  .close {
+    display: inline-block;
+    margin-top: 1.5em;
+    color: rgba(black, 0.4);
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  @include media('<phone-lg') {
+    font-size: 14px;
+    position: relative;
+
+    h2 {
+      margin-right: 40px;
+    }
+
+    p {
+      margin-bottom: 0;
+
+      & + p {
+        margin-top: 0.25em;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      margin-top: 0;
+    }
+  }
+}
+
+.service:not(.wide) {
+  @include media('<phone-lg') {
+    .close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      margin-top: 0;
+    }
+  }
+
+  @include media('>=tablet') {
+    .close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      margin-top: 0;
+    }
+  }
+}
+
+@include media('>=tablet') {
+  .service {
+    // float: left;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 3px;
+    width: calc((100% / (1140 + 14) * (472 + 14)) - 14px);
+
+    &.wide {
+      width: calc((100% / (1140 + 14) * (652 + 14)) - 14px);
+    }
+  }
+}
+
+@supports (display: flex) {
+  .service-caption,
+  .service-description {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .service-description {
+    display: none;
+
+    .is-opened & {
+      display: flex;
+    }
+  }
+
+  @include media('>=tablet') {
+    .service {
+      margin-right: 7px;
+    }
+
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
