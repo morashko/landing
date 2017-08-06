@@ -65,7 +65,7 @@ function initSlideshow() {
     var mask = container.find('.mask .slides');
     var slides = mask.find('.slide');
     var slidesCount = slides.length;
-    var pagination = container.find('.pagination ul li');
+    var pagination;
     var btnPrev = container.find('.btn-prev');
     var btnNext = container.find('.btn-next');
     var slideIndex = 0;
@@ -73,13 +73,24 @@ function initSlideshow() {
     var slideshowHeight = slides.eq(slideIndex).height();
     
     slides.eq(slideIndex).addClass('active');
-//    slides.css({opacity: 0}).filter('.active').css({opacity: 1});
+
+    function generatePagination() {
+      container.append('<div class="pagination"><ul></ul></div>');
+
+      for(var i = 1; i <= slidesCount; i++) {
+        $('.pagination ul').append('<li>' + i + '</li>');
+      }
+
+      pagination = container.find('.pagination ul li');
+      pagination.eq(slideIndex).addClass('active');
+    }    
 
     function slideHeight() {
       slideshowHeight = slides.eq(slideIndex).height();
       mask.height(slideshowHeight);
     }
 
+    generatePagination()
     slideHeight();
     
     function checkRange() {
@@ -92,14 +103,6 @@ function initSlideshow() {
     }
     
     function changeSlide() {
-      // slides.stop().animate({
-      //   opacity: 0
-      // }, animationDuration);
-      
-      // slides.eq(slideIndex).stop().animate({
-      //   opacity: 1
-      // }, animationDuration);
-      
       pagination.removeClass('active');
       pagination.eq(slideIndex).addClass('active');
       slides.removeClass('active');
@@ -122,6 +125,7 @@ function initSlideshow() {
     });   
     
     pagination.each(function(index) {
+      console.log(index);
       $(this).on('click', function() {
         slideIndex = index;
         changeSlide();
