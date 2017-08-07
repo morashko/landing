@@ -1,0 +1,57 @@
+// burger menu style
+.nav-opener {
+  position: absolute;
+  display: inline-block;
+  top: 8px;
+  right: 15px;
+  z-index: 200;
+  width: 30px;
+  height: 30px;
+  text-indent: -9999px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+
+  &:before,
+  &:after,
+  span {
+    background: #606061;
+    border-radius: 2px;
+    position: absolute;
+    top: 13px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    transition: all 0.2s linear;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    top: 4px;
+  }
+
+  &:after {
+    top: 22px;
+  }
+
+  .nav-active & {
+    span {
+      opacity: 0;
+    }
+
+    &:before,
+    &:after {
+      top: 17px;
+      background: #fff;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}

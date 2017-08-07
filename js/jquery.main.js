@@ -2,6 +2,7 @@ jQuery(function(){
   initFocuseState();
   initSlideshow();
   initServices();
+  fixedHeader();
 });
 
 function initServices() {
@@ -20,6 +21,37 @@ function initServices() {
       box.removeClass('is-opened');
     });
   });
+}
+
+function fixedHeader() {
+  var header = jQuery('.header');
+  var hero = jQuery('.hero');
+  var win = jQuery(window);
+  var slideshowHeight;
+  var headerHeight;
+
+  function resizeHandler() {
+    heroHeight = hero.outerHeight(true);
+    headerHeight = header.outerHeight(true);
+    scrollHandler();
+  }
+
+  function scrollHandler() {
+    var scrollTop = win.scrollTop();
+
+    if (hero) {
+      if (scrollTop > (heroHeight - headerHeight)) {
+        header.addClass('is-fixed');
+      } else {
+        header.removeClass('is-fixed');
+      }
+    }
+  }
+
+  if (hero) {
+    resizeHandler();
+    win.on('load resize orientationchange', resizeHandler).on('scroll', scrollHandler);
+  }
 }
 
 function initFocuseState() {
@@ -81,7 +113,7 @@ function initFocuseState() {
 function initSlideshow() {
   $('.slideshow').each(function() {
     var container = $(this);
-    var mask = container.find('.mask .slides');
+    var mask = container.find('.slides');
     var slides = mask.find('.slide');
     var slidesCount = slides.length;
     var pagination;
@@ -90,14 +122,17 @@ function initSlideshow() {
     var slideIndex = 0;
     var animationDuration = 300;
     var slideshowHeight = slides.eq(slideIndex).height();
+    var swipeThreshold = 15;
     
     slides.eq(slideIndex).addClass('active');
 
     function generatePagination() {
       container.append('<div class="pagination"><ul></ul></div>');
 
+      var paginationHolder = container.find('.pagination ul');
+
       for(var i = 1; i <= slidesCount; i++) {
-        $('.pagination ul').append('<li>' + i + '</li>');
+        paginationHolder.append('<li>' + i + '</li>');
       }
 
       pagination = container.find('.pagination ul li');
@@ -128,19 +163,27 @@ function initSlideshow() {
       slides.eq(slideIndex).addClass('active');
       slideHeight();
     }
-    
-    btnPrev.on('click', function(e) {
-      e.preventDefault();
+
+    function prevSlide() {
       slideIndex--;
       checkRange();
       changeSlide();
+    }
+
+    function nextSlide() {
+      slideIndex++;
+      checkRange();
+      changeSlide();
+    }
+    
+    btnPrev.on('click', function(e) {
+      e.preventDefault();
+      prevSlide();
     });
 
     btnNext.on('click', function(e) {
       e.preventDefault();
-      slideIndex++;
-      checkRange();
-      changeSlide();
+      nextSlide();
     });   
     
     pagination.each(function(index) {
@@ -149,6 +192,8 @@ function initSlideshow() {
         changeSlide();
       });
     });
+
+  
 
     $(window).on('load resize orientationchange', slideHeight);
   });

@@ -1,0 +1,47 @@
+.works-list {
+  @extend %listreset;
+  margin: 0 -7px;
+  overflow: hidden;
+
+  img {
+    vertical-align: top;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  a {
+    display: block;
+    overflow: hidden;
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+  
+  > li {
+    float: left;
+    margin: 0 auto 13px;
+    padding: 0 8px;
+
+    @include media('>=phone') {
+      width: 50%;
+    }
+
+    @include media('>=tablet') {
+      width: 33.3333%;
+    }
+  }
+}
+
+@supports (display: flex) {
+  .works-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      float: none;
+    }
+  }
+}

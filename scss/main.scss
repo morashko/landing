@@ -35,7 +35,11 @@ $media-expressions: (
 
 @import 'layout/global';
 @import 'layout/header';
+@import 'layout/mobile-nav';
 @import 'layout/footer';
+@import 'layout/hero';
+@import 'layout/about';
+@import 'layout/works';
 @import 'layout/services';
 @import 'layout/team';
 @import 'layout/testimonials';

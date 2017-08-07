@@ -24,22 +24,48 @@
     color: rgba(black, 0.902);
     font-family: $base-font-sans-serif2;
     font-weight: bold;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     margin: 0;
+
+
+    @include media('<tablet') {
+      font-size: 25px;
+    }
   }
 
   .sub-header {
     text-align: center;
     font-size: 17px;
     font-family: $base-font-serif;
-    letter-spacing: 0.5px;
+    letter-spacing: 2.2px;
     text-transform: uppercase;
     color: rgba(black, 0.62);
     margin-bottom: 70px;
+
+
+    @include media('<tablet') {
+      font-size: 14px;
+    }
   }
 
   
   @include media('>=tablet') {
+    padding: 85px 0;
+
+    .sub-header {
+      margin-bottom: 85px;
+    }
+  }
+
+  @include media('>=desktop') {
+    padding: 100px 0;
+
+    .sub-header {
+      margin-bottom: 100px;
+    }
+  }
+
+  @include media('>=widescreen') {
     padding: 115px 0;
 
     .sub-header {

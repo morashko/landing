@@ -165,13 +165,15 @@ var PathConfig = require('./grunt-settings.js');
     uncss: {
       dist: {
         options: {
-          ignore: ['.animated', 
-                    '.wow', 
-                    '.fadeIn',
-                    '.is-success',
-                    /is-/,
-                    /is-error/
-                  ]
+          ignore: ['.pagination',
+                   '.pagination *',
+                   /pagination/,
+                   /active/,
+                   /active */,
+                   /is-/,
+                   /is-error/
+                  ],
+          ignoreSheets : [/fonts.googleapis/]
         },
         files: {
           'css/main.css': ['index.html']
@@ -289,8 +291,8 @@ var PathConfig = require('./grunt-settings.js');
 
 //finally 
   //css beautiful
-  grunt.registerTask('cssbeauty', ['sass:dist', 'postcss:dist', 'uncss', 
-                                    /*'criticalcss',*/ 'cssmin']);
+  grunt.registerTask('cssbeauty', ['sass:dist', 'postcss:dist', 'uncss', 'cssmin']);
+                                    //'criticalcss',*/ 'cssmin']);
   //img minify
 //  grunt.registerTask('imgmin', ['imagemin', 'pngmin:all', 'svgmin']);
 

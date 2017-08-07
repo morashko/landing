@@ -1,21 +1,50 @@
 .btn {
   display: inline-block;
-  border-radius: 4px;
   background-color: $brand-color;
+  border: 0;
+  border-radius: 4px;
+  text-align: center;
+  font: 18px/23px $base-font-sans-serif2;
+  letter-spacing: 1px;
+  color: rgba(black, 0.7);
+  text-transform: uppercase;
+  border-radius: 2px;
+  padding: 15px 37px;
+  outline: none;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($brand-color, 5%);
+  }
+}
+
+.btn-ghost {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
   text-align: center;
   font-size: 18px;
   font-family: $base-font-sans-serif2;
-  padding: 0;
-  border: 0;
-  color: rgba(black, 0.7);
+  border: 2px solid #777879;
+  color: rgba(black, 0.75);
   text-transform: uppercase;
   padding: 15px 37px;
   line-height: 23px;
   letter-spacing: 1px;
   border-radius: 2px;
   outline: none;
+  text-decoration: none;
 
   &:hover {
     background-color: darken($brand-color, 5%);
+    border-color: darken($brand-color, 5%);
+  }
+}
+
+@include media('<tablet') {
+  .btn,
+  .btn-ghost {
+    padding: 7px 16px;
+    font-size: 15px;
   }
 }

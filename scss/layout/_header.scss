@@ -1,3 +1,39 @@
 .header {
-  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  padding: 24px 0;
+  transition: all 0.3s ease-in-out;
+
+  img {
+    vertical-align: top;
+  }
+
+  &.is-fixed {
+    background: #eff0f2;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  @include media('>=tablet') {
+    padding: 34px 0;
+    position: fixed;
+    
+    &.is-fixed {
+      padding: 24px 0;
+    }
+  }
+
+  @include media('>=desktop') {
+    padding: 44px 0;
+  }
+
+  @include media('>=widescreen') {
+    padding: 64px 0;
+
+  }
 }

@@ -5,7 +5,7 @@
     vertical-align: top;
   }
 
-  .mask {
+  .slides {
     position: relative;
     width: 100%;
   }
@@ -20,7 +20,13 @@
     opacity: 0;
     z-index: 0;
     transition: all 0.3s ease;
-    @extend %clearfix;
+    // @extend %clearfix;
+    
+    @include media('>=tablet') {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
 
     &.active {
       z-index: 1;
@@ -81,6 +87,11 @@
         &.active {
           background: $brand-color;
         }
+
+        @include media('<phone') {
+          width: 22px;
+          height: 8px;
+        }
       }
     }
   }
@@ -114,6 +125,7 @@
 
   .slide-text-body {
     margin: auto;
+    width: 100%;
   }
 }
 
@@ -156,35 +168,42 @@
 }
 
 
+// @supports (display: flex) {
+//   .slide-text {
+//     display: flex;
+//     padding: 15px 7%;
 
+//     .slide-text-body {
+//       margin: auto;
+//     }
+//   }
 
-@supports (display: flex) {
-  .slide-image {
-    display: flex;
+//   .slide-image {
+//     display: flex;
 
-    .slide-image-holder {
-      margin: auto;
-    }
-  }
+//     .slide-image-holder {
+//       margin: auto;
+//     }
+//   }
 
-  @include media('>=tablet') {
-    .slideshow {
-      .slide {
-        display: flex;
-        justify-content: space-between;
+//   @include media('>=tablet') {
+//     .slideshow {
+//       .slide {
+//         display: flex;
+//         justify-content: space-between;
 
-        &:after {
-          display: none;
-        }
-      }
-    }
+//         &:after {
+//           display: none;
+//         }
+//       }
+//     }
 
-    .slide-text {
-      display: flex;
+//     .slide-text {
+//       display: flex;
 
-      .slide-text-body {
-        margin: auto;
-      }
-    }
-  }
-}
+//       .slide-text-body {
+//         margin: auto;
+//       }
+//     }
+//   }
+// }

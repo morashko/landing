@@ -17,6 +17,7 @@
 
 .contacts-columns {
   margin: 0 -14px -28px;
+  @extend %clearfix;
 
   @include media('>=tablet') {
     display: flex;
@@ -33,7 +34,9 @@
   }
 
   @include media('>=tablet') {
+    float: left;
     width: (100% / 1140 * 615);
+    width: calc((100% / (1140 + 28) * (614 + 28)) - 28px);
   }
 
   label {
@@ -87,6 +90,12 @@
   font-style: normal;
   padding: 30px 30px 20px;
 
+  @include media('>=tablet') {
+    float: right;
+    width: (100% / 1140 * 499);
+    width: calc((100% / (1140 + 28) * (498 + 28)) - 28px);
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -96,15 +105,22 @@
     }
   }
 
-  @include media('>=tablet') {
-    width: (100% / 1140 * 499);
-  }
-
   .map {
     margin: 20px -7px 0;
   }
 
   iframe {
     width: 100%;
+  }
+}
+
+
+@supports (display: flex) {
+  .contacts-columns {
+    @include media('>=tablet') {
+      &:after {
+        content: none;
+      }
+    }
   }
 }
