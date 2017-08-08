@@ -26,13 +26,14 @@
     }
   }
 
-  h2,
-  .h2 {
+  h3,
+  .h3 {
     font-family: $base-font-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1em;
     font-size: 1.25em;
+    line-height: 1.1;
   }
 }
 

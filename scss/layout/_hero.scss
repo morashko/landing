@@ -41,9 +41,14 @@
     font-size: calc(16px + 2.014vw);
 
     span {
+      display: block;
+    }
+
+    mark {
       background: #b2f2ee;
       padding: 0 0.25em;
       margin: 0 -0.05em;
+      color: inherit;
     }
 
     @include media('>=1600px') {
